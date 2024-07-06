@@ -1,0 +1,274 @@
+  <!-- =======================================================
+  * Modified by: Sadaf Ashraf
+  * This is the survey.html file containing web form elements as requested. 
+  * I have modified a pre built Bootstrap CSS template.
+  * The detailed reference of template is in the comments below.
+  ======================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Survey</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="icon" href="https://www.gmu.edu/themes/custom/sf_mason_basic/favicon.ico" type="image/vnd.microsoft.icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Green
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">sashxxxx@gmu.edu</a>
+        <i class="bi bi-phone-fill phone-icon"></i> +1 703 993 1000
+      </div>
+      <div class="social-links d-none d-md-block">
+        <a href="https://twitter.com/" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.facebook.com/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">GEORGE <span class="middle">MASON</span> UNIVERSITY</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="http://sashraf-swe645.s3-website-us-east-1.amazonaws.com/">About GMU</a></li>
+          <li><a class="nav-link scrollto" href="http://54.91.65.39/Survey.html">Survey</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Survey Form ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title1">
+          <h2>Survey</h2>
+          <p>Allows prospective students to provide feedback about their campus visit.</p>
+        </div>
+        
+        <!-- Form Starts Here -->
+        <form action="" method="post" autocomplete="on" role="form" class="php-email-form">
+          <div class="row">
+            <div class="form-group col-md-6 required">
+              <label for="firstname">First name:</label>
+              <input type="text" name="firstname" class="form-control" id="fname" autofocus required>
+            </div>
+            <div class="form-group col-md-6 mt-3 mt-md-0 required">
+              <label for="lastname">Last name:</label>
+              <input type="text" name="lastname" class="form-control" id="lname" required>
+            </div>
+          </div>
+            <div class="form-group mt-3 required">
+              <label for="address">Street address:</label>
+              <input type="text" name="address" class="form-control" id="address" required>
+            </div>
+            <div class="row">
+              <div class="form-group col required">
+                <label for="city">City:</label>
+                <input type="text" name="city" class="form-control" id="city" required>
+              </div>
+              <div class="form-group col order-12 required">
+                <label for="state">State:</label>
+                <input type="text" name="state" class="form-control" id="state" required>
+              </div>
+              <div class="form-group col order-1 required">
+                <label for="zip">Zip:</label>
+                <input type="text" name="zip" class="form-control" id="zip" required>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="form-group col-md-6 required">
+                <label for="phone">Telephone number:</label>
+                <input type="tel" name="phone" class="form-control" id="phone" pattern="\(\d{3}\) \d{3}-\d{4}" placeholder="(###) ###-####" required>
+              </div>
+			  <div class="form-group col-md-6 mt-3 mt-md-0 required">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="example@domain.com" required>
+              </div>
+            </div>
+            
+            <!-- Checkboxes for what you liked the most-->
+            <div class="row">
+              <label for="date">What you liked the most about the campus:</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck1" value="Students">
+                <label class="form-check-label" for="defaultCheck1">Students</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck2" value="Location">
+                <label class="form-check-label" for="defaultCheck2">Location</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck3" value="Campus">
+                <label class="form-check-label" for="defaultCheck3">Campus</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck4" value="Atmosphere">
+                <label class="form-check-label" for="defaultCheck4">Atmosphere</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck5" value="Dorm Rooms">
+                <label class="form-check-label" for="defaultCheck5">Dorm Rooms</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck6" value="Sports">
+                <label class="form-check-label" for="defaultCheck6">Sports</label>
+              </div> 
+            </div>
+            <br>
+
+            <!-- Radio Buttons for how you got interested -->
+            <div class="row">
+              <label for="date">How you become interested in the university:</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadiosOptions" id="exampleRadios1" value="Friends">
+                <label class="form-check-label" for="exampleRadios1">Friends</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadiosOptions" id="exampleRadios2" value="Television">
+                <label class="form-check-label" for="exampleRadios2">Television</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadiosOptions" id="exampleRadios3" value="Internet">
+                <label class="form-check-label" for="exampleRadios3">Internet</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadiosOptions" id="exampleRadios4" value="Other">
+                <label class="form-check-label" for="exampleRadios4">Other</label>
+              </div>
+            </div>
+            <br>
+
+            <!-- Using Select for dropdown & also Date of Survey  -->
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Likelihood of you recommending this school to other prospective students:</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Select an Option</option>
+                  <option value="1">Very Likely</option>
+                  <option value="2">Likely</option>
+                  <option value="3">Unlikely</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6 mt-3 mt-md-0 required">
+                <label for="date">Date of survey:</label>
+                <input type="date" name="date" class="form-control" id="date" required>
+              </div>
+            </div>
+			
+			<!-- Raffle Text box  -->
+			 <div class="form-group mt-3">
+				<label for="raffle">Raffle (Enter at least ten comma separated numbers ranging from 1 through 100) to win a free movie ticket:</label>
+				<input type="text" name="raffle" class="form-control" id="raffle" pattern="^(\s*\d+\s*,){9,}\s*\d+\s*$" inputmode="numeric" placeholder="1,2,3,4,5,6,7,8,9,10">
+            </div>
+
+            <!-- Text Area for Additional Comments -->
+            <div class="form-group mt-3">
+              <label for="comments">Additional Comments:</label>
+              <textarea  name="comments" class="form-control" rows="5" id="comments"></textarea>
+            </div>
+
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+
+             <!-- Submit and Cancel Button using bootstrap button -->           
+            <div class="text-center">
+              <button type="submit" value="Submit">Submit</button>
+			  <button type="reset" value="Cancel">Cancel</button>
+            </div>
+        </form>
+        <!-- Form Ends Here -->
+          
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>George Mason University</h3>
+      <p>You can reached out on the social media paltforms.</p>
+      <div class="social-links">
+        <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Green</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/green-free-one-page-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
