@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/sashraf2090/campus-survey-form.git'
+                git branch: 'master', url: 'https://github.com/sashraf2090/campus-survey-form.git'
             }
         }
 
