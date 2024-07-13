@@ -18,7 +18,7 @@ pipeline {
                 script {
                     // Build Docker image
                     docker.withRegistry('https://registry.hub.docker.com', REGISTRY_CREDENTIALS) {
-                        def customImage = docker.build("sashraf2090/surveyformcontainer645:${env.BUILD_NUMBER}")
+                        def customImage = docker.build("sashraf2090/surveyformcontainer645:2.2")
                         customImage.push()
                     }
                 }
