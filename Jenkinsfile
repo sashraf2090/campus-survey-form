@@ -48,6 +48,7 @@ pipeline {
                 script {
                     withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                         sh """
+                            kubectl --kubeconfig=\$KUBECONFIG delete deployment ${KUBE_DEPLOYMENT_NAME} || true
                             kubectl --kubeconfig=\$KUBECONFIG apply -f - <<EOF
 apiVersion: apps/v1
 kind: Deployment
@@ -69,6 +70,21 @@ spec:
         image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
         ports:
         - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${KUBE_SERVICE_NAME}
+  namespace: ${KUBE_NAMESPACE}
+spec:
+  selector:
+    app: ${KUBE_DEPLOYMENT_NAME}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 31884
+  type: NodePort
 EOF
                         """
                     }
