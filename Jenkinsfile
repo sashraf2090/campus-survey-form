@@ -43,40 +43,37 @@ pipeline {
             }
         }
 
-     stage('Deploy to Kubernetes') {
-            environment {
-                KUBECONFIG = credentials('kubeconfig')
-            }
+        stage('Deploy to Rancher Kubernetes Cluster') {
             steps {
                 script {
-                    // Use kubectl to deploy the latest image to Kubernetes
-                    sh """
-                        kubectl apply --kubeconfig=${KUBECONFIG} -f - <<EOF
-                        apiVersion: apps/v1
-                        kind: Deployment
-                        metadata:
-                          name: ${KUBE_DEPLOYMENT_NAME}
-                          namespace: ${KUBE_NAMESPACE}
-                        spec:
-                          replicas: 3
-                          selector:
-                            matchLabels:
-                              app: ${KUBE_DEPLOYMENT_NAME}
-                          template:
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+                        sh """
+                            kubectl --kubeconfig=\$KUBECONFIG apply -f - <<EOF
+                            apiVersion: apps/v1
+                            kind: Deployment
                             metadata:
-                              labels:
-                                app: ${KUBE_DEPLOYMENT_NAME}
+                              name: ${KUBE_DEPLOYMENT_NAME}
+                              namespace: ${KUBE_NAMESPACE}
                             spec:
-                              containers:
-                              - name: ${KUBE_DEPLOYMENT_NAME}
-                                image: sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP}
-                                ports:
-                                - containerPort: 8080
-                        EOF
-                    """
+                              replicas: 3
+                              selector:
+                                matchLabels:
+                                  app: ${KUBE_DEPLOYMENT_NAME}
+                              template:
+                                metadata:
+                                  labels:
+                                    app: ${KUBE_DEPLOYMENT_NAME}
+                                spec:
+                                  containers:
+                                  - name: ${KUBE_DEPLOYMENT_NAME}
+                                    image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
+                                    ports:
+                                    - containerPort: 8080
+                            EOF
+                        """
+                    }
                 }
             }
         }
-        
     }
 }
