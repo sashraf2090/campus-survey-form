@@ -35,7 +35,6 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh """
                             echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin
-                            cp SurveyForm.war .
                             docker build -t sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP} .
                             docker push sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP}
                         """
