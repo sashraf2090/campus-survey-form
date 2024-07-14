@@ -4,9 +4,9 @@ pipeline {
     environment {
         // Define environment variables
         REGISTRY_CREDENTIALS = 'docker-hub-credentials'  // Name of Jenkins credential for Docker registry
-        DOCKER_IMAGE_NAME = 'your-docker-image-name'     // Name of your Docker image
+        DOCKER_IMAGE_NAME = 'sashraf2090/surveyformcontainer645'     // Name of your Docker image
         KUBE_NAMESPACE = 'default'                       // Kubernetes namespace to deploy to
-        KUBE_DEPLOYMENT_NAME = 'your-deployment-name'    // Name of Kubernetes Deployment
+        KUBE_DEPLOYMENT_NAME = 'survey-form-deployment'    // Name of Kubernetes Deployment
         KUBE_CONTAINER_PORT = 8080                       // Port exposed by your Docker container
         KUBE_CONTAINER_NAME = 'your-container-name'      // Name of your container within Kubernetes
         KUBE_CONTEXT = 'your-kubernetes-context'         // Kubernetes context to use (optional)
@@ -39,6 +39,41 @@ pipeline {
                             docker push sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP}
                         """
                     }
+                }
+            }
+        }
+
+     stage('Deploy to Kubernetes') {
+            environment {
+                KUBECONFIG = credentials('kubeconfig')
+            }
+            steps {
+                script {
+                    // Use kubectl to deploy the latest image to Kubernetes
+                    sh """
+                        kubectl apply --kubeconfig=${KUBECONFIG} -f - <<EOF
+                        apiVersion: apps/v1
+                        kind: Deployment
+                        metadata:
+                          name: ${KUBE_DEPLOYMENT_NAME}
+                          namespace: ${KUBE_NAMESPACE}
+                        spec:
+                          replicas: 3
+                          selector:
+                            matchLabels:
+                              app: ${KUBE_DEPLOYMENT_NAME}
+                          template:
+                            metadata:
+                              labels:
+                                app: ${KUBE_DEPLOYMENT_NAME}
+                            spec:
+                              containers:
+                              - name: ${KUBE_DEPLOYMENT_NAME}
+                                image: sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP}
+                                ports:
+                                - containerPort: 8080
+                        EOF
+                    """
                 }
             }
         }
