@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
       - name: ${KUBE_DEPLOYMENT_NAME}
-        image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
+        image: sashraf2090/surveyformcontainer645:latest
         ports:
         - containerPort: 8080
 ---
