@@ -1,17 +1,23 @@
+/**
+ * Jenkins Pipeline File
+ * Author: Sadaf A
+ * Description: Pipeline to build and deploy SurveyForm application image to dockerhub and K8s
+ */
+
 pipeline {
     agent any
 
     environment {
         // Define environment variables
-        REGISTRY_CREDENTIALS = 'docker-hub-credentials'  // Name of Jenkins credential for Docker registry
+        REGISTRY_CREDENTIALS = 'docker-hub-credentials'              // Name of Jenkins credential for Docker registry
         DOCKER_IMAGE_NAME = 'sashraf2090/surveyformcontainer645'     // Name of your Docker image
-        KUBE_NAMESPACE = 'default'                       // Kubernetes namespace to deploy to
-        KUBE_DEPLOYMENT_NAME = 'survey-form-deployment'    // Name of Kubernetes Deployment
-        KUBE_CONTAINER_PORT = 8080                       // Port exposed by your Docker container
-        KUBE_CONTAINER_NAME = 'your-container-name'      // Name of your container within Kubernetes
-        KUBE_CONTEXT = 'your-kubernetes-context'         // Kubernetes context to use (optional)
-        BUILD_TIMESTAMP = "${new Date().format('yyyyMMddHHmmss')}"
-        KUBE_SERVICE_NAME = 'survey-form-deployment-service'
+        KUBE_NAMESPACE = 'default'                                   // Kubernetes namespace to deploy to
+        KUBE_DEPLOYMENT_NAME = 'survey-form-deployment'              // Name of Kubernetes Deployment
+        KUBE_CONTAINER_PORT = 8080                                   // Port exposed by your Docker container
+        KUBE_CONTAINER_NAME = 'your-container-name'                  // Name of your container within Kubernetes
+        KUBE_CONTEXT = 'your-kubernetes-context'                     // Kubernetes context to use (optional)
+        BUILD_TIMESTAMP = "${new Date().format('yyyyMMddHHmmss')}"   // Get current date time for build tag
+        KUBE_SERVICE_NAME = 'survey-form-deployment-service'         // Kubernetes service name
     }
 
     stages {
