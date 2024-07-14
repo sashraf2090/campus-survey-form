@@ -37,7 +37,7 @@ pipeline {
                         sh """
                             echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin
                             docker build -t sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP} .
-                            docker push sashraf2090/surveyformcontainer645:${BUILD_TIMESTAMP}
+                            docker push ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
                         """
                     }
                 }
@@ -50,6 +50,7 @@ pipeline {
                     withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                         sh """
                             kubectl --kubeconfig=\$KUBECONFIG delete deployment ${KUBE_DEPLOYMENT_NAME} || true
+                            kubectl --kubeconfig=\$KUBECONFIG delete service ${KUBE_SERVICE_NAME} || true
                             kubectl --kubeconfig=\$KUBECONFIG apply -f - <<EOF
 apiVersion: apps/v1
 kind: Deployment
@@ -68,7 +69,7 @@ spec:
     spec:
       containers:
       - name: ${KUBE_DEPLOYMENT_NAME}
-        image: sashraf2090/surveyformcontainer645:latest
+        image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
         ports:
         - containerPort: 8080
 ---
@@ -84,7 +85,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      nodePort: 31884
+      nodePort: 31885
   type: NodePort
 EOF
                         """
