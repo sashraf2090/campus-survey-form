@@ -49,27 +49,27 @@ pipeline {
                     withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                         sh """
                             kubectl --kubeconfig=\$KUBECONFIG apply -f - <<EOF
-                            apiVersion: apps/v1
-                            kind: Deployment
-                            metadata:
-                              name: ${KUBE_DEPLOYMENT_NAME}
-                              namespace: ${KUBE_NAMESPACE}
-                            spec:
-                              replicas: 3
-                              selector:
-                                matchLabels:
-                                  app: ${KUBE_DEPLOYMENT_NAME}
-                              template:
-                                metadata:
-                                  labels:
-                                    app: ${KUBE_DEPLOYMENT_NAME}
-                                spec:
-                                  containers:
-                                  - name: ${KUBE_DEPLOYMENT_NAME}
-                                    image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
-                                    ports:
-                                    - containerPort: 8080
-                            EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${KUBE_DEPLOYMENT_NAME}
+  namespace: ${KUBE_NAMESPACE}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ${KUBE_DEPLOYMENT_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${KUBE_DEPLOYMENT_NAME}
+    spec:
+      containers:
+      - name: ${KUBE_DEPLOYMENT_NAME}
+        image: ${DOCKER_IMAGE_NAME}:${BUILD_TIMESTAMP}
+        ports:
+        - containerPort: 8080
+EOF
                         """
                     }
                 }
