@@ -11,6 +11,7 @@ pipeline {
         KUBE_CONTAINER_NAME = 'your-container-name'      // Name of your container within Kubernetes
         KUBE_CONTEXT = 'your-kubernetes-context'         // Kubernetes context to use (optional)
         BUILD_TIMESTAMP = "${new Date().format('yyyyMMddHHmmss')}"
+        KUBE_SERVICE_NAME = 'survey-form-deployment-service'
     }
 
     stages {
